@@ -33,7 +33,14 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = SplashActivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        binding.settingsButton.setOnClickListener(view -> navigateToSettings());
+//        binding.settingsButton.setOnClickListener(view -> navigateToSettings()); лямда
+        binding.settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigateToSettings();
+            }
+        }); //анонимный класс
+
 
         if (ContextUtils.hasContactPermissions(this)) {
             navigateToMain();
